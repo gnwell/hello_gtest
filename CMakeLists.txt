@@ -34,7 +34,14 @@ if (CMAKE_VERSION VERSION_LESS 2.8.11)
 endif()
 
 aux_source_directory(. SRC_LIST)
-aux_source_directory(${gtest_SOURCE_DIR}/samples SRC_LIST)
+set(SRC_LIST ${SRC_LIST} 
+             ${gtest_SOURCE_DIR}/samples/sample1.h
+             ${gtest_SOURCE_DIR}/samples/sample1.cc
+             )
+
+#aux_source_directory(${gtest_SOURCE_DIR}/samples SRC_LIST)
+
+
 add_executable(hello_gtest ${SRC_LIST})
 
-TARGET_LINK_LIBRARIES(hello_gtest gtest)
+TARGET_LINK_LIBRARIES(hello_gtest gtest_main gmock)
